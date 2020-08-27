@@ -17,3 +17,20 @@ get '/scores/:id' do
 
   score.to_json
 end
+
+post '/scores' do
+  content_type :json
+
+  request.body.rewind
+  payload = JSON.parse(request.body.read)
+  score_params = payload["score"]
+
+  score = Score.new(score_params)
+
+  unless score.save
+    status 422
+    return score.errors.to_json
+  end
+
+  score.to_json
+end

@@ -3,6 +3,11 @@ require "sinatra/activerecord"
 require "./models/score.rb"
 set :database_file, "config/database.yml"
 
+before do '/*'
+  auth_header = request.env["HTTP_X_API_KEY"]
+  halt 401 unless auth_header && Rack::Utils.secure_compare(auth_header, ENV["API_KEY"])
+end
+
 get '/scores' do
   content_type :json
 

@@ -26,7 +26,7 @@ post '/scores' do
   score_params = payload["score"]
 
   score = Score.new(score_params)
-
+	puts(score_params)
   unless score.save
     status 422
     return score.errors.to_json

@@ -25,8 +25,8 @@ post '/scores' do
   payload = JSON.parse(request.body.read)
   score_params = payload["score"]
 
-	puts(score_params)
-  score = Score.new(score_params)
+	score = Score.new(score_params)
+	
   unless score.save
     status 422
     return score.errors.to_json

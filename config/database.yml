@@ -10,4 +10,4 @@ development:
 
 production:
   <<: *default
-  database: scores_db
+  url: <%= ENV['DATABASE_URL'] %>

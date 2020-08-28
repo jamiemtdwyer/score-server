@@ -7,5 +7,4 @@ development:
   database: scores_dev_db
 
 production:
-  <<: *default
   url: <%= ENV['DATABASE_URL'] %>

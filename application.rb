@@ -21,7 +21,7 @@ end
 get '/highscore' do
   content_type :json
 
-  score = Score.order(:value).last
+  score = Score.order(:score).last
   halt 404 unless score
 
   score.to_json

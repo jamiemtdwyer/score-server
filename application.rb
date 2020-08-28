@@ -18,6 +18,15 @@ get '/scores/:id' do
   score.to_json
 end
 
+get '/highscore' do
+  content_type :json
+
+  score = Score.order(:value).last
+  halt 404 unless score
+
+  score.to_json
+end
+
 post '/scores' do
   content_type :json
 
@@ -25,8 +34,8 @@ post '/scores' do
   payload = JSON.parse(request.body.read)
   score_params = payload["score"]
 
-	score = Score.new(score_params)
-	
+  score = Score.new(score_params)
+
   unless score.save
     status 422
     return score.errors.to_json

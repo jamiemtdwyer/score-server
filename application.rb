@@ -18,6 +18,11 @@ get '/scores/:id' do
   score.to_json
 end
 
+get '/scores_below/:score' do
+  content_type :json
+  Score.all.order(score: :desc).where(score: ..params[:score]).limit(25).to_json
+end
+
 get '/highscore' do
   content_type :json
 

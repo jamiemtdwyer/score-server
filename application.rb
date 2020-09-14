@@ -1,7 +1,14 @@
 require "sinatra"
 require "sinatra/activerecord"
+require "sinatra/cors"
 require "./models/score.rb"
+
 set :database_file, "config/database.yml"
+
+set :allow_origin, "*"
+set :allow_methods, "GET,HEAD,POST"
+set :allow_headers, "content-type,if-modified-since"
+set :expose_headers, "location,link"
 
 before do '/*'
   auth_header = request.env["HTTP_X_API_KEY"]

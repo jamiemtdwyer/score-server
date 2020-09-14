@@ -30,6 +30,15 @@ get '/scores/:id' do
   score.to_json
 end
 
+get '/level_scores/:level' do
+  content_type :json
+
+  score = Score.all.where(level_id: params[:level]).order(score: :desc)
+  halt 404 unless score
+
+  score.to_json
+end
+
 post '/scores' do
   content_type :json
 

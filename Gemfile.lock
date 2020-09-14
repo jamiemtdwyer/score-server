@@ -19,6 +19,7 @@ GEM
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     pg (1.2.3)
+    pg (1.2.3-x64-mingw32)
     postgresql (1.0.0)
       pg
     rack (2.2.3)
@@ -42,6 +43,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   postgresql

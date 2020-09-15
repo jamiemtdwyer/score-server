@@ -6,6 +6,8 @@ class Score < ActiveRecord::Base
   attribute :rank, :integer
 
   def rank
-    self.class.where("score > ?", score).count + 1
+    self.class
+      .where(level_id: level_id)
+      .where("score > ?", score).count + 1
   end
 end
